@@ -1,35 +1,24 @@
 {
-  "name": "pwframework",
+  "name": "blast-jira-testplan-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test:ui": "playwright test --ui",
-    "test:chromium": "playwright test --project=chromium",
-    "test:firefox": "playwright test --project=firefox",
-    "test:debug": "PWDEBUG=1 playwright test",
-    "test:e2e": "playwright test --grep @e2e",
-    "test:po": "playwright test --grep @po",
-    "test:report": "playwright show-report",
-    "test:allure": "playwright test --reporter=line,allure-playwright",
-    "test:report:ci": "playwright test --reporter=github",
-    "lint": "eslint .",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "format": "prettier --write .",
-    "build": "tsc -p tsconfig.json",
-    "clean": "rimraf test-results playwright-report allure-results dist"
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:client": "vite",
+    "dev:server": "node --watch server/index.js",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
   "devDependencies": {
-    "@faker-js/faker": "^10.4.0",
-    "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1",
-    "allure-playwright": "^3.9.0",
-    "dotenv": "^17.4.2",
-    "typescript": "^6.0.3",
-    "winston": "^3.15.0"
+    "concurrently": "^9.0.1",
+    "vite": "^5.4.10"
   }
 }

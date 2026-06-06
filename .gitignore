@@ -1,14 +1,14 @@
+node_modules/
+dist/
+.env
+.env.*
+.vercel
 
 # Playwright
-node_modules/
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
 
-# Environment secrets
-.env
-.env.*
-dist/
 logs/
