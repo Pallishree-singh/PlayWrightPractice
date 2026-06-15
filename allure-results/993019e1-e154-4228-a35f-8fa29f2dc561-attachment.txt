@@ -1,0 +1,18 @@
+APIResponse: 200 OK
+  Date: Mon, 15 Jun 2026 15:05:38 GMT
+  Content-Type: text/html; charset=utf-8
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  x-content-type-options: nosniff
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=aBxwpPmM4j19eLfYSNrPtIRQ2xjdAVgitW4Go7eVMzHfSO8O8bKgfIRcU3VyYKs%2FBdJxb%2BEZqdQOHXz90AVaMDAd1qp%2Bh8TIFsqBiD3DGPjnHcWLAqj8nPRiqvIJHUm0iFS5N5sLZg1Qz3G0"}]}
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=0, must-revalidate
+  referrer-policy: strict-origin-when-cross-origin
+  Link: <https://clerk.thetestingacademy.com>; rel="preconnect", <https://sdetblueprint-api.sdetblueprint.workers.dev>; rel="preconnect"
+  vary: accept-encoding
+  Server: cloudflare
+  cf-cache-status: DYNAMIC
+  Content-Encoding: br
+  CF-RAY: a0c2795b98ff9e23-SIN
+  alt-svc: h3=":443"; ma=86400

@@ -1,0 +1,2 @@
+2026-06-15 20:27:14 [info] [e2e-checkout] Step 1: logging in as standard_user
+2026-06-15 20:27:18 [info] [LoginPage] loginAs standard_user / tta_secret
