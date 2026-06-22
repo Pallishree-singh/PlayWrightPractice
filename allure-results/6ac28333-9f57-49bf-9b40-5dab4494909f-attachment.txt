@@ -1,0 +1,4 @@
+2026-06-22 23:38:32 [info] [booking-crud] Step 1: deleting booking 3785
+2026-06-22 23:38:32 [info] [booking-crud] Step 1: DELETE responded with status 201
+2026-06-22 23:38:32 [info] [booking-crud] Step 2: confirming booking 3785 is gone (expect 404)
+2026-06-22 23:38:32 [info] [booking-crud] Step 2: booking 3785 returns 404 as expected

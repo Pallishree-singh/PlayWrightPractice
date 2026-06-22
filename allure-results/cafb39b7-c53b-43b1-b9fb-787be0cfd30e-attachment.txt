@@ -1,0 +1,3 @@
+2026-06-23 00:20:38 [info] [schema-validation] Step 1: static sample valid=true
+2026-06-23 00:20:39 [info] [schema-validation] Step 2: live booking 117 valid=true
+2026-06-23 00:20:39 [info] [schema-validation] Step 3: broken object valid=false, 2 errors

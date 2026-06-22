@@ -1,0 +1,2 @@
+2026-06-22 23:45:22 [info] [booking-crud] Step 1: creating booking for E2E Journey
+2026-06-22 23:45:24 [info] [booking-crud] Step 1: created booking id 2537

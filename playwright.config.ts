@@ -76,11 +76,11 @@ export default defineConfig({
   projects: [
     {
       name: 'api',
-      testMatch: /src\/tests\/apitests\/.*\.spec\.ts/,
+      testMatch: /src\/tests\/apiTests\/.*\.spec\.ts/,
     },
     {
       name: 'chromium',
-      testIgnore: /src\/tests\/apitests\/.*\.spec\.ts/,
+      testIgnore: /src\/tests\/apiTests\/.*\.spec\.ts/,
       use: { ...devices['Desktop Chrome'] },
     },
     // { name: 'firefox', use: { ...devices['Desktop Firefox'] } },

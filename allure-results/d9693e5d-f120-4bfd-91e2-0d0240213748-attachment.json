@@ -1,0 +1,14 @@
+{
+  "bookingid": 4389,
+  "booking": {
+    "firstname": "E2E",
+    "lastname": "Journey",
+    "totalprice": 152,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-02-01",
+      "checkout": "2026-01-19"
+    },
+    "additionalneeds": "Late checkout"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "bookingid": 117,
+  "booking": {
+    "firstname": "Schema",
+    "lastname": "Gibson",
+    "totalprice": 401,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-02-01",
+      "checkout": "2026-01-29"
+    },
+    "additionalneeds": "Extra bed"
+  }
+}

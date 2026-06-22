@@ -1,0 +1,4 @@
+2026-06-22 23:44:50 [info] [create_Booking.spec.ts] Sending POST /booking request with payload
+2026-06-22 23:44:51 [info] [create_Booking.spec.ts] Response status: 200
+2026-06-22 23:44:52 [info] [create_Booking.spec.ts] Parsing response and validating booking details
+2026-06-22 23:44:52 [info] [create_Booking.spec.ts] All booking assertions passed

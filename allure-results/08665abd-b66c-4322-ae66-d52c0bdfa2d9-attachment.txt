@@ -1,0 +1,2 @@
+2026-06-17 23:51:26 [info] [create_Booking.spec.ts] Sending POST /booking request with payload
+2026-06-17 23:51:27 [info] [create_Booking.spec.ts] Response status: 405
