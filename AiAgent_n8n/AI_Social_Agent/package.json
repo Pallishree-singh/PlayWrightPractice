@@ -1,0 +1,22 @@
+{
+  "name": "contentforge",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "npm@10.8.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace @contentforge/api\" \"npm run dev --workspace @contentforge/web\"",
+    "dev:api": "npm run dev --workspace @contentforge/api",
+    "dev:web": "npm run dev --workspace @contentforge/web",
+    "build": "npm run build --workspace @contentforge/shared && npm run build --workspace @contentforge/api && npm run build --workspace @contentforge/web",
+    "lint": "npm run lint --workspace @contentforge/api && npm run lint --workspace @contentforge/web",
+    "db:generate": "npm run db:generate --workspace @contentforge/api",
+    "db:migrate": "npm run db:migrate --workspace @contentforge/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

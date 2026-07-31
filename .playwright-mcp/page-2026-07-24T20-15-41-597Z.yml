@@ -1,0 +1,75 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - blockquote [ref=e7]:
+        - img "HDFC ERGO Logo" [ref=e8]
+        - heading "HDFC ERGO" [level=3] [ref=e9]
+        - paragraph [ref=e10]: Performics Lowers Cost Per Conversion, Improves RoAS 1.5X for HDFC ERGO General Insurance with VWO
+        - generic [ref=e11]: 47 %
+        - generic [ref=e15]: Cost Per Acquisition
+      - generic [ref=e16]:
+        - heading "Trusted by 3000+ leading brands globally" [level=3] [ref=e17]
+        - generic [ref=e19]:
+          - img "Homecentre Logo" [ref=e21]
+          - img "ICICI Logo" [ref=e23]
+          - img "HDFC Logo" [ref=e25]
+          - img "Paytm Logo" [ref=e27]
+          - img "Policy Bazaar Logo" [ref=e29]
+          - img "Browserstack Logo" [ref=e31]
+    - generic [ref=e32]:
+      - generic [ref=e34]:
+        - link [ref=e36] [cursor=pointer]:
+          - /url: https://vwo.com/
+          - img "VWO Logo" [ref=e37]
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - heading "Sign up for a full-featured trial" [level=1] [ref=e41]
+            - paragraph [ref=e42]: Free for 30 days. No credit card required
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - text: Business Email
+              - textbox "Business Email" [ref=e45]:
+                - /placeholder: name@yourcompany.com
+              - generic [ref=e46]: Invalid Email
+            - generic [ref=e47]:
+              - checkbox "I agree to Wingify's Privacy Policy & Terms" [ref=e48] [cursor=pointer]
+              - generic [ref=e49] [cursor=pointer]:
+                - text: I agree to Wingify's
+                - link "Privacy Policy" [ref=e50]:
+                  - /url: https://wingify.com/privacy-policy/
+                - text: "&"
+                - link "Terms" [ref=e51]:
+                  - /url: https://wingify.com/terms/
+            - button "Create a Free Trial Account" [disabled] [ref=e53]
+          - generic [ref=e54]:
+            - heading "What you get with VWO Free Trial:" [level=2] [ref=e55]
+            - list [ref=e56]:
+              - listitem [ref=e57]: Understand visitor behaviour
+              - listitem [ref=e60]: Run A/B, multivariate & feature experiments
+              - listitem [ref=e63]: Personalize experiences for target audiences
+              - listitem [ref=e66]: Leverage AI - VWO Copilot features
+              - listitem [ref=e69]: Use VWO Customer Data Platform for user segmentation & targeting
+      - generic:
+        - generic:
+          - img "vwo gdpr ready badge"
+        - generic:
+          - img "VWO CCPA ready badge"
+        - generic:
+          - img "SOC 2 Type II Badge"
+        - generic:
+          - img "VWO ISO IEC 27001 Certification Badge"
+        - generic:
+          - img "VWO BS 10012 Certification Badge"
+  - alert [ref=e72]:
+    - button "close banner" [ref=e73] [cursor=pointer]
+    - generic [ref=e76]:
+      - paragraph [ref=e77]: We have exciting news to share! VWO and AB Tasty are joining forces.
+      - link "Read More" [ref=e78] [cursor=pointer]:
+        - /url: https://vwo.com/blog/vwo-and-ab-tasty-join-forces/
+  - dialog "Privacy" [ref=e80]:
+    - generic [ref=e82]:
+      - generic [ref=e83]: We use cookies to ensure you get the best experience on our website. You can control how we use cookies by clicking on Cookie Settings. If you continue to use this site, you consent to our use of cookies.
+      - generic [ref=e87]:
+        - button "Cookie Settings, Opens the preference center dialog" [ref=e88] [cursor=pointer]: Cookie Settings
+        - button "Allow Cookies" [ref=e89] [cursor=pointer]
+    - button "Close" [ref=e91] [cursor=pointer]

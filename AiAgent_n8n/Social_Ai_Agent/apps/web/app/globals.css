@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f7fbff;
+  --fg: #091222;
+  --surface: #ffffff;
+  --accent: #0ea37f;
+  --accent-2: #ff8748;
+}
+
+body {
+  color: var(--fg);
+  background:
+    radial-gradient(circle at 10% 20%, #dcf8ec 0%, transparent 35%),
+    radial-gradient(circle at 90% 10%, #ffe8d9 0%, transparent 30%),
+    linear-gradient(160deg, #f7fbff 0%, #ecf4ff 100%);
+  min-height: 100vh;
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}

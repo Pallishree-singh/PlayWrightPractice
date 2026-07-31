@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playwright MCP — Available Tools</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      line-height: 1.7;
+      color: #24292f;
+      background: #ffffff;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    h1 { font-size: 2rem; border-bottom: 2px solid #e1e4e8; padding-bottom: 12px; color: #0d1117; }
+    h2 { font-size: 1.35rem; margin-top: 40px; color: #0d1117; border-bottom: 1px solid #e1e4e8; padding-bottom: 6px; }
+    blockquote {
+      border-left: 4px solid #0969da;
+      background: #f6f8fa;
+      padding: 10px 18px;
+      margin: 16px 0;
+      color: #57606a;
+      border-radius: 0 6px 6px 0;
+    }
+    blockquote p { margin: 0; }
+    a { color: #0969da; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      background: #f0f0f5;
+      color: #d63384;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.875em;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    pre {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 8px;
+      padding: 16px 20px;
+      overflow-x: auto;
+    }
+    pre code {
+      background: none;
+      color: #24292f;
+      padding: 0;
+      font-size: 0.9em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 0.9rem;
+    }
+    thead tr { background: #f6f8fa; }
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      border: 1px solid #d0d7de;
+      font-weight: 600;
+      color: #0d1117;
+    }
+    td {
+      padding: 8px 14px;
+      border: 1px solid #d0d7de;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #f6f8fa; }
+    tr:hover td { background: #eaf3ff; }
+    hr { border: none; border-top: 2px solid #e1e4e8; margin: 36px 0; }
+    em { color: #57606a; }
+  </style>
+</head>
+<body>
+<h1>Playwright MCP — Available Tools</h1>
+<blockquote>
+<p>Source: <a href="https://github.com/microsoft/playwright-mcp">microsoft/playwright-mcp</a><br>Version: v0.0.78</p>
+</blockquote>
+<hr>
+<h2>1. Core Automation <em>(enabled by default)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Title</th>
+<th>Description</th>
+<th>Read-only</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>browser_click</code></td>
+<td>Click</td>
+<td>Perform click on a web page</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_close</code></td>
+<td>Close browser</td>
+<td>Close the page</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_console_messages</code></td>
+<td>Get console messages</td>
+<td>Returns all console messages</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_drag</code></td>
+<td>Drag mouse</td>
+<td>Perform drag and drop between two elements</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_drop</code></td>
+<td>Drop files or data</td>
+<td>Drop files or MIME-typed data onto an element</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_evaluate</code></td>
+<td>Evaluate JavaScript</td>
+<td>Evaluate JavaScript expression on page or element</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_file_upload</code></td>
+<td>Upload files</td>
+<td>Upload one or multiple files</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_fill_form</code></td>
+<td>Fill form</td>
+<td>Fill multiple form fields</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_find</code></td>
+<td>Find in page snapshot</td>
+<td>Search the accessibility snapshot for text or regex</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_handle_dialog</code></td>
+<td>Handle a dialog</td>
+<td>Accept or dismiss a browser dialog</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_hover</code></td>
+<td>Hover mouse</td>
+<td>Hover over element on page</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_navigate</code></td>
+<td>Navigate to a URL</td>
+<td>Navigate to a URL</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_navigate_back</code></td>
+<td>Go back</td>
+<td>Go back to the previous page in history</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_network_request</code></td>
+<td>Show network request details</td>
+<td>Returns full details of a single network request</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_network_requests</code></td>
+<td>List network requests</td>
+<td>Returns a numbered list of network requests</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_press_key</code></td>
+<td>Press a key</td>
+<td>Press a key on the keyboard</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_resize</code></td>
+<td>Resize browser window</td>
+<td>Resize the browser window</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_run_code_unsafe</code></td>
+<td>Run Playwright code (unsafe)</td>
+<td>Run arbitrary Playwright code snippet (RCE-equivalent)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_select_option</code></td>
+<td>Select option</td>
+<td>Select an option in a dropdown</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_snapshot</code></td>
+<td>Page snapshot</td>
+<td>Capture accessibility snapshot of the current page</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_take_screenshot</code></td>
+<td>Take a screenshot</td>
+<td>Take a screenshot of the current page</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_type</code></td>
+<td>Type text</td>
+<td>Type text into editable element</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_wait_for</code></td>
+<td>Wait for</td>
+<td>Wait for text to appear/disappear or time to pass</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>2. Tab Management <em>(enabled by default)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Title</th>
+<th>Description</th>
+<th>Read-only</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>browser_tabs</code></td>
+<td>Manage tabs</td>
+<td>List, create, close, or select a browser tab</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>3. Configuration <em>(opt-in: <code>--caps=config</code>)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Title</th>
+<th>Description</th>
+<th>Read-only</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>browser_get_config</code></td>
+<td>Get config</td>
+<td>Get the final resolved config after merging CLI options, env vars, and config file</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>4. Network <em>(opt-in: <code>--caps=network</code>)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Title</th>
+<th>Description</th>
+<th>Read-only</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>browser_network_state_set</code></td>
+<td>Set network state</td>
+<td>Set the browser network to online or offline</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_route</code></td>
+<td>Mock network requests</td>
+<td>Set up a route to mock network requests matching a URL pattern</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_route_list</code></td>
+<td>List network routes</td>
+<td>List all active network routes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_unroute</code></td>
+<td>Remove network routes</td>
+<td>Remove network routes matching a pattern (or all)</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. Storage <em>(opt-in: <code>--caps=storage</code>)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Title</th>
+<th>Description</th>
+<th>Read-only</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>browser_cookie_clear</code></td>
+<td>Clear cookies</td>
+<td>Clear all cookies</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_cookie_delete</code></td>
+<td>Delete cookie</td>
+<td>Delete a specific cookie by name</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_cookie_get</code></td>
+<td>Get cookie</td>
+<td>Get a specific cookie by name</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_cookie_list</code></td>
+<td>List cookies</td>
+<td>List all cookies (optionally filtered by domain/path)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_cookie_set</code></td>
+<td>Set cookie</td>
+<td>Set a cookie with optional flags</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_localstorage_clear</code></td>
+<td>Clear localStorage</td>
+<td>Clear all localStorage</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_localstorage_delete</code></td>
+<td>Delete localStorage item</td>
+<td>Delete a localStorage item by key</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_localstorage_get</code></td>
+<td>Get localStorage item</td>
+<td>Get a localStorage item by key</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_localstorage_list</code></td>
+<td>List localStorage</td>
+<td>List all localStorage key-value pairs</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_localstorage_set</code></td>
+<td>Set localStorage item</td>
+<td>Set a localStorage item</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_sessionstorage_clear</code></td>
+<td>Clear sessionStorage</td>
+<td>Clear all sessionStorage</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_sessionstorage_delete</code></td>
+<td>Delete sessionStorage item</td>
+<td>Delete a sessionStorage item</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_sessionstorage_get</code></td>
+<td>Get sessionStorage item</td>
+<td>Get a sessionStorage item by key</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_sessionstorage_list</code></td>
+<td>List sessionStorage</td>
+<td>List all sessionStorage key-value pairs</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_sessionstorage_set</code></td>
+<td>Set sessionStorage item</td>
+<td>Set a sessionStorage item</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_set_storage_state</code></td>
+<td>Restore storage state</td>
+<td>Restore cookies and localStorage from a file</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_storage_state</code></td>
+<td>Save storage state</td>
+<td>Save cookies and localStorage to a file</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>6. DevTools <em>(opt-in: <code>--caps=devtools</code>)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Title</th>
+<th>Description</th>
+<th>Read-only</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>browser_annotate</code></td>
+<td>Annotate the current page</td>
+<td>Open Playwright Dashboard in annotation mode</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_hide_highlight</code></td>
+<td>Hide element highlight</td>
+<td>Remove a highlight overlay from an element</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_highlight</code></td>
+<td>Highlight element</td>
+<td>Show a persistent highlight overlay around an element</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_resume</code></td>
+<td>Resume paused script execution</td>
+<td>Resume script after pause; supports step-by-step debugging</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_start_tracing</code></td>
+<td>Start tracing</td>
+<td>Start trace recording</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_start_video</code></td>
+<td>Start video</td>
+<td>Start video recording</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_stop_tracing</code></td>
+<td>Stop tracing</td>
+<td>Stop trace recording</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_stop_video</code></td>
+<td>Stop video</td>
+<td>Stop video recording</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_video_chapter</code></td>
+<td>Video chapter</td>
+<td>Add a chapter marker to the video recording</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_video_hide_actions</code></td>
+<td>Hide action overlays</td>
+<td>Stop annotating actions on the page</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_video_show_actions</code></td>
+<td>Show action overlays</td>
+<td>Annotate actions with callout and highlight</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>7. Coordinate-based / Vision <em>(opt-in: <code>--caps=vision</code>)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Title</th>
+<th>Description</th>
+<th>Read-only</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>browser_mouse_click_xy</code></td>
+<td>Click</td>
+<td>Click mouse at given X/Y coordinates</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_mouse_down</code></td>
+<td>Press mouse down</td>
+<td>Press mouse button down</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_mouse_drag_xy</code></td>
+<td>Drag mouse</td>
+<td>Drag left mouse button from one position to another</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_mouse_move_xy</code></td>
+<td>Move mouse</td>
+<td>Move mouse to a given X/Y position</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_mouse_up</code></td>
+<td>Press mouse up</td>
+<td>Release mouse button</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_mouse_wheel</code></td>
+<td>Scroll mouse wheel</td>
+<td>Scroll mouse wheel by deltaX/deltaY</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>8. PDF Generation <em>(opt-in: <code>--caps=pdf</code>)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Title</th>
+<th>Description</th>
+<th>Read-only</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>browser_pdf_save</code></td>
+<td>Save as PDF</td>
+<td>Save the current page as a PDF file</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>9. Test Assertions <em>(opt-in: <code>--caps=testing</code>)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Title</th>
+<th>Description</th>
+<th>Read-only</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>browser_generate_locator</code></td>
+<td>Create locator for element</td>
+<td>Generate a Playwright locator for use in tests</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>browser_verify_element_visible</code></td>
+<td>Verify element visible</td>
+<td>Verify element is visible on the page</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_verify_list_visible</code></td>
+<td>Verify list visible</td>
+<td>Verify a list and its items are visible</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_verify_text_visible</code></td>
+<td>Verify text visible</td>
+<td>Verify text is visible on the page</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>browser_verify_value</code></td>
+<td>Verify value</td>
+<td>Verify element value (supports checkbox true/false)</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Enabling Opt-in Capabilities</h2>
+<p>Add <code>--caps</code> to your MCP config args to enable additional tool groups:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;playwright&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [
+        &quot;@playwright/mcp@latest&quot;,
+        &quot;--caps=vision,pdf,devtools,network,storage,config,testing&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<p>Or enable specific ones only:</p>
+<pre><code class="language-bash">npx @playwright/mcp@latest --caps=vision,pdf
+</code></pre>
+<hr>
+<h2>Tool Count Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Tools</th>
+<th>Enabled by Default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Core Automation</td>
+<td>23</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Tab Management</td>
+<td>1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td>1</td>
+<td>No (<code>--caps=config</code>)</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>4</td>
+<td>No (<code>--caps=network</code>)</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>17</td>
+<td>No (<code>--caps=storage</code>)</td>
+</tr>
+<tr>
+<td>DevTools</td>
+<td>11</td>
+<td>No (<code>--caps=devtools</code>)</td>
+</tr>
+<tr>
+<td>Vision / Coordinate</td>
+<td>6</td>
+<td>No (<code>--caps=vision</code>)</td>
+</tr>
+<tr>
+<td>PDF Generation</td>
+<td>1</td>
+<td>No (<code>--caps=pdf</code>)</td>
+</tr>
+<tr>
+<td>Test Assertions</td>
+<td>5</td>
+<td>No (<code>--caps=testing</code>)</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>69</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+
+</body>
+</html>

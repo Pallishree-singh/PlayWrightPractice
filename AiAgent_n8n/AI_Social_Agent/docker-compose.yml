@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: contentforge-api
+    env_file:
+      - .env
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./apps/api/data:/app/apps/api/data
+      - ./apps/api/public/generated-images:/app/apps/api/public/generated-images
+    command: sh -c "npm run db:generate --workspace @contentforge/api && npm run db:migrate --workspace @contentforge/api && npm run dev --workspace @contentforge/api"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: contentforge-web
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    command: sh -c "npm run dev --workspace @contentforge/web"

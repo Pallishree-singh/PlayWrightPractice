@@ -1,0 +1,1301 @@
+Scenario,TID,TestCase Description,PreCondition,TestSteps,Expected Result,Actual Result,Status,Executed QA Name,Misc (Comments),Priority,Is Automated
+Valid Login,TID-001,Sample login test case 1,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Valid Login,TID-002,Sample login test case 2,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Valid Login,TID-003,Sample login test case 3,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,No
+Valid Login,TID-004,Sample login test case 4,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Valid Login,TID-005,Sample login test case 5,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Valid Login,TID-006,Sample login test case 6,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,Yes
+Valid Login,TID-007,Sample login test case 7,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Valid Login,TID-008,Sample login test case 8,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Valid Login,TID-009,Sample login test case 9,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,No
+Valid Login,TID-010,Sample login test case 10,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Valid Login,TID-011,Sample login test case 11,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Valid Login,TID-012,Sample login test case 12,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,Yes
+Valid Login,TID-013,Sample login test case 13,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Valid Login,TID-014,Sample login test case 14,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Valid Login,TID-015,Sample login test case 15,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,No
+Valid Login,TID-016,Sample login test case 16,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Valid Login,TID-017,Sample login test case 17,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Valid Login,TID-018,Sample login test case 18,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,Yes
+Valid Login,TID-019,Sample login test case 19,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Valid Login,TID-020,Sample login test case 20,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Valid Login,TID-021,Sample login test case 21,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,No
+Valid Login,TID-022,Sample login test case 22,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Valid Login,TID-023,Sample login test case 23,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Valid Login,TID-024,Sample login test case 24,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,Yes
+Valid Login,TID-025,Sample login test case 25,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Invalid Login,TID-026,Sample login test case 26,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Invalid Login,TID-027,Sample login test case 27,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,No
+Invalid Login,TID-028,Sample login test case 28,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Invalid Login,TID-029,Sample login test case 29,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Invalid Login,TID-030,Sample login test case 30,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,Yes
+Invalid Login,TID-031,Sample login test case 31,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Invalid Login,TID-032,Sample login test case 32,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Invalid Login,TID-033,Sample login test case 33,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,No
+Invalid Login,TID-034,Sample login test case 34,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Invalid Login,TID-035,Sample login test case 35,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Invalid Login,TID-036,Sample login test case 36,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,Yes
+Invalid Login,TID-037,Sample login test case 37,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Invalid Login,TID-038,Sample login test case 38,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Invalid Login,TID-039,Sample login test case 39,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,No
+Invalid Login,TID-040,Sample login test case 40,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Invalid Login,TID-041,Sample login test case 41,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Invalid Login,TID-042,Sample login test case 42,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,Yes
+Invalid Login,TID-043,Sample login test case 43,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Invalid Login,TID-044,Sample login test case 44,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Invalid Login,TID-045,Sample login test case 45,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,No
+Invalid Login,TID-046,Sample login test case 46,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Invalid Login,TID-047,Sample login test case 47,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Invalid Login,TID-048,Sample login test case 48,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,High,Yes
+Invalid Login,TID-049,Sample login test case 49,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,No
+Invalid Login,TID-050,Sample login test case 50,Application is available,"1. Open app
+2. Navigate to Login
+3. Enter credentials
+4. Click Login",System behaves as expected,,Not Executed,,,Medium,Yes
+Admin Login,TID-051,Admin Login test case 51,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Support Login,TID-052,Support Login test case 52,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Authentication,TID-053,Authentication test case 53,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Authorization,TID-054,Authorization test case 54,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Session,TID-055,Session test case 55,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Admin Login,TID-056,Admin Login test case 56,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Support Login,TID-057,Support Login test case 57,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Authentication,TID-058,Authentication test case 58,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Authorization,TID-059,Authorization test case 59,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Session,TID-060,Session test case 60,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Admin Login,TID-061,Admin Login test case 61,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Support Login,TID-062,Support Login test case 62,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Authentication,TID-063,Authentication test case 63,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Authorization,TID-064,Authorization test case 64,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Session,TID-065,Session test case 65,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Admin Login,TID-066,Admin Login test case 66,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Support Login,TID-067,Support Login test case 67,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Authentication,TID-068,Authentication test case 68,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Authorization,TID-069,Authorization test case 69,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Session,TID-070,Session test case 70,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Admin Login,TID-071,Admin Login test case 71,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Support Login,TID-072,Support Login test case 72,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Authentication,TID-073,Authentication test case 73,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Authorization,TID-074,Authorization test case 74,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Session,TID-075,Session test case 75,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Admin Login,TID-076,Admin Login test case 76,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Support Login,TID-077,Support Login test case 77,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Authentication,TID-078,Authentication test case 78,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Authorization,TID-079,Authorization test case 79,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Session,TID-080,Session test case 80,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Admin Login,TID-081,Admin Login test case 81,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Support Login,TID-082,Support Login test case 82,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Authentication,TID-083,Authentication test case 83,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Authorization,TID-084,Authorization test case 84,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Session,TID-085,Session test case 85,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Admin Login,TID-086,Admin Login test case 86,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Support Login,TID-087,Support Login test case 87,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Authentication,TID-088,Authentication test case 88,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Authorization,TID-089,Authorization test case 89,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Session,TID-090,Session test case 90,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Admin Login,TID-091,Admin Login test case 91,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Support Login,TID-092,Support Login test case 92,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Authentication,TID-093,Authentication test case 93,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Authorization,TID-094,Authorization test case 94,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Session,TID-095,Session test case 95,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Admin Login,TID-096,Admin Login test case 96,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+Support Login,TID-097,Support Login test case 97,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Authentication,TID-098,Authentication test case 98,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,Yes
+Authorization,TID-099,Authorization test case 99,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,Medium,No
+Session,TID-100,Session test case 100,User/application prerequisites met,"1. Open application
+2. Navigate to Login
+3. Enter data
+4. Submit request
+5. Verify response",Expected behavior is observed,,Not Executed,,,High,Yes
+API Validation,TID-101,API Validation test case 101,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Security,TID-102,Security test case 102,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Invalid Login,TID-103,Invalid Login test case 103,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Token Validation,TID-104,Token Validation test case 104,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Cookie Validation,TID-105,Cookie Validation test case 105,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,High,No
+API Validation,TID-106,API Validation test case 106,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Security,TID-107,Security test case 107,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Invalid Login,TID-108,Invalid Login test case 108,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Token Validation,TID-109,Token Validation test case 109,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Cookie Validation,TID-110,Cookie Validation test case 110,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,High,Yes
+API Validation,TID-111,API Validation test case 111,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Security,TID-112,Security test case 112,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Invalid Login,TID-113,Invalid Login test case 113,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Token Validation,TID-114,Token Validation test case 114,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Cookie Validation,TID-115,Cookie Validation test case 115,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,High,No
+API Validation,TID-116,API Validation test case 116,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Security,TID-117,Security test case 117,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Invalid Login,TID-118,Invalid Login test case 118,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Token Validation,TID-119,Token Validation test case 119,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Cookie Validation,TID-120,Cookie Validation test case 120,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,High,Yes
+API Validation,TID-121,API Validation test case 121,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Security,TID-122,Security test case 122,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Invalid Login,TID-123,Invalid Login test case 123,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Token Validation,TID-124,Token Validation test case 124,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Cookie Validation,TID-125,Cookie Validation test case 125,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,High,No
+API Validation,TID-126,API Validation test case 126,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Security,TID-127,Security test case 127,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Invalid Login,TID-128,Invalid Login test case 128,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Token Validation,TID-129,Token Validation test case 129,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Cookie Validation,TID-130,Cookie Validation test case 130,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,High,Yes
+API Validation,TID-131,API Validation test case 131,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Security,TID-132,Security test case 132,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Invalid Login,TID-133,Invalid Login test case 133,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Token Validation,TID-134,Token Validation test case 134,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Cookie Validation,TID-135,Cookie Validation test case 135,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,High,No
+API Validation,TID-136,API Validation test case 136,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Security,TID-137,Security test case 137,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Invalid Login,TID-138,Invalid Login test case 138,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Token Validation,TID-139,Token Validation test case 139,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Cookie Validation,TID-140,Cookie Validation test case 140,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,High,Yes
+API Validation,TID-141,API Validation test case 141,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Security,TID-142,Security test case 142,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Invalid Login,TID-143,Invalid Login test case 143,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Token Validation,TID-144,Token Validation test case 144,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Cookie Validation,TID-145,Cookie Validation test case 145,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,High,No
+API Validation,TID-146,API Validation test case 146,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Security,TID-147,Security test case 147,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Invalid Login,TID-148,Invalid Login test case 148,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,Yes
+Token Validation,TID-149,Token Validation test case 149,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,Medium,No
+Cookie Validation,TID-150,Cookie Validation test case 150,System available,"1. Prepare request
+2. Configure headers
+3. Execute
+4. Verify response
+5. Validate logs",Application returns expected result,,Not Executed,,,High,Yes
+CAPTCHA,TID-151,CAPTCHA test case 151,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Rate Limiting,TID-152,Rate Limiting test case 152,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Brute Force,TID-153,Brute Force test case 153,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Response Validation,TID-154,Response Validation test case 154,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Performance,TID-155,Performance test case 155,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+CAPTCHA,TID-156,CAPTCHA test case 156,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Rate Limiting,TID-157,Rate Limiting test case 157,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Brute Force,TID-158,Brute Force test case 158,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Response Validation,TID-159,Response Validation test case 159,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Performance,TID-160,Performance test case 160,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+CAPTCHA,TID-161,CAPTCHA test case 161,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Rate Limiting,TID-162,Rate Limiting test case 162,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Brute Force,TID-163,Brute Force test case 163,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Response Validation,TID-164,Response Validation test case 164,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Performance,TID-165,Performance test case 165,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+CAPTCHA,TID-166,CAPTCHA test case 166,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Rate Limiting,TID-167,Rate Limiting test case 167,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Brute Force,TID-168,Brute Force test case 168,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Response Validation,TID-169,Response Validation test case 169,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Performance,TID-170,Performance test case 170,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+CAPTCHA,TID-171,CAPTCHA test case 171,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Rate Limiting,TID-172,Rate Limiting test case 172,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Brute Force,TID-173,Brute Force test case 173,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Response Validation,TID-174,Response Validation test case 174,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Performance,TID-175,Performance test case 175,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+CAPTCHA,TID-176,CAPTCHA test case 176,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Rate Limiting,TID-177,Rate Limiting test case 177,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Brute Force,TID-178,Brute Force test case 178,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Response Validation,TID-179,Response Validation test case 179,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Performance,TID-180,Performance test case 180,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+CAPTCHA,TID-181,CAPTCHA test case 181,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Rate Limiting,TID-182,Rate Limiting test case 182,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Brute Force,TID-183,Brute Force test case 183,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Response Validation,TID-184,Response Validation test case 184,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Performance,TID-185,Performance test case 185,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+CAPTCHA,TID-186,CAPTCHA test case 186,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Rate Limiting,TID-187,Rate Limiting test case 187,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Brute Force,TID-188,Brute Force test case 188,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Response Validation,TID-189,Response Validation test case 189,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Performance,TID-190,Performance test case 190,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+CAPTCHA,TID-191,CAPTCHA test case 191,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Rate Limiting,TID-192,Rate Limiting test case 192,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Brute Force,TID-193,Brute Force test case 193,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Response Validation,TID-194,Response Validation test case 194,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Performance,TID-195,Performance test case 195,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+CAPTCHA,TID-196,CAPTCHA test case 196,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Rate Limiting,TID-197,Rate Limiting test case 197,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Brute Force,TID-198,Brute Force test case 198,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Response Validation,TID-199,Response Validation test case 199,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,No
+Performance,TID-200,Performance test case 200,System available,"1. Prepare test data
+2. Invoke login API
+3. Validate response
+4. Verify database/logs",Expected behavior achieved,,Not Executed,,,High,Yes
+Boundary Validation,TID-201,Boundary Validation test case 201,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,No
+Concurrent Login,TID-202,Concurrent Login test case 202,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Logout,TID-203,Logout test case 203,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Session Timeout,TID-204,Session Timeout test case 204,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,Yes
+Audit Logging,TID-205,Audit Logging test case 205,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Boundary Validation,TID-206,Boundary Validation test case 206,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Concurrent Login,TID-207,Concurrent Login test case 207,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,No
+Logout,TID-208,Logout test case 208,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Session Timeout,TID-209,Session Timeout test case 209,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Audit Logging,TID-210,Audit Logging test case 210,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,Yes
+Boundary Validation,TID-211,Boundary Validation test case 211,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Concurrent Login,TID-212,Concurrent Login test case 212,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Logout,TID-213,Logout test case 213,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,No
+Session Timeout,TID-214,Session Timeout test case 214,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Audit Logging,TID-215,Audit Logging test case 215,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Boundary Validation,TID-216,Boundary Validation test case 216,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,Yes
+Concurrent Login,TID-217,Concurrent Login test case 217,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Logout,TID-218,Logout test case 218,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Session Timeout,TID-219,Session Timeout test case 219,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,No
+Audit Logging,TID-220,Audit Logging test case 220,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Boundary Validation,TID-221,Boundary Validation test case 221,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Concurrent Login,TID-222,Concurrent Login test case 222,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,Yes
+Logout,TID-223,Logout test case 223,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Session Timeout,TID-224,Session Timeout test case 224,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Audit Logging,TID-225,Audit Logging test case 225,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,No
+Boundary Validation,TID-226,Boundary Validation test case 226,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Concurrent Login,TID-227,Concurrent Login test case 227,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Logout,TID-228,Logout test case 228,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,Yes
+Session Timeout,TID-229,Session Timeout test case 229,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Audit Logging,TID-230,Audit Logging test case 230,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Boundary Validation,TID-231,Boundary Validation test case 231,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,No
+Concurrent Login,TID-232,Concurrent Login test case 232,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Logout,TID-233,Logout test case 233,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Session Timeout,TID-234,Session Timeout test case 234,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,Yes
+Audit Logging,TID-235,Audit Logging test case 235,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Boundary Validation,TID-236,Boundary Validation test case 236,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Concurrent Login,TID-237,Concurrent Login test case 237,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,No
+Logout,TID-238,Logout test case 238,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Session Timeout,TID-239,Session Timeout test case 239,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Audit Logging,TID-240,Audit Logging test case 240,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,Yes
+Boundary Validation,TID-241,Boundary Validation test case 241,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Concurrent Login,TID-242,Concurrent Login test case 242,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Logout,TID-243,Logout test case 243,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,No
+Session Timeout,TID-244,Session Timeout test case 244,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Audit Logging,TID-245,Audit Logging test case 245,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Boundary Validation,TID-246,Boundary Validation test case 246,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,Yes
+Concurrent Login,TID-247,Concurrent Login test case 247,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,No
+Logout,TID-248,Logout test case 248,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Session Timeout,TID-249,Session Timeout test case 249,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,High,No
+Audit Logging,TID-250,Audit Logging test case 250,Required user/environment available,"1. Prepare prerequisites
+2. Execute login scenario
+3. Observe API response
+4. Verify expected outcome",Feature works according to specification,,Not Executed,,,Medium,Yes
+Remember Me,TID-251,Remember Me test case 251,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Password Policy,TID-252,Password Policy test case 252,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+Account Lock,TID-253,Account Lock test case 253,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Multi-device Login,TID-254,Multi-device Login test case 254,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+API Error Handling,TID-255,API Error Handling test case 255,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Remember Me,TID-256,Remember Me test case 256,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+Password Policy,TID-257,Password Policy test case 257,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Account Lock,TID-258,Account Lock test case 258,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+Multi-device Login,TID-259,Multi-device Login test case 259,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+API Error Handling,TID-260,API Error Handling test case 260,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+Remember Me,TID-261,Remember Me test case 261,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Password Policy,TID-262,Password Policy test case 262,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+Account Lock,TID-263,Account Lock test case 263,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Multi-device Login,TID-264,Multi-device Login test case 264,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+API Error Handling,TID-265,API Error Handling test case 265,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Remember Me,TID-266,Remember Me test case 266,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+Password Policy,TID-267,Password Policy test case 267,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Account Lock,TID-268,Account Lock test case 268,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+Multi-device Login,TID-269,Multi-device Login test case 269,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+API Error Handling,TID-270,API Error Handling test case 270,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+Remember Me,TID-271,Remember Me test case 271,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Password Policy,TID-272,Password Policy test case 272,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+Account Lock,TID-273,Account Lock test case 273,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Multi-device Login,TID-274,Multi-device Login test case 274,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+API Error Handling,TID-275,API Error Handling test case 275,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Remember Me,TID-276,Remember Me test case 276,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+Password Policy,TID-277,Password Policy test case 277,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Account Lock,TID-278,Account Lock test case 278,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+Multi-device Login,TID-279,Multi-device Login test case 279,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+API Error Handling,TID-280,API Error Handling test case 280,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+Remember Me,TID-281,Remember Me test case 281,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Password Policy,TID-282,Password Policy test case 282,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+Account Lock,TID-283,Account Lock test case 283,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Multi-device Login,TID-284,Multi-device Login test case 284,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+API Error Handling,TID-285,API Error Handling test case 285,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Remember Me,TID-286,Remember Me test case 286,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+Password Policy,TID-287,Password Policy test case 287,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Account Lock,TID-288,Account Lock test case 288,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+Multi-device Login,TID-289,Multi-device Login test case 289,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+API Error Handling,TID-290,API Error Handling test case 290,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+Remember Me,TID-291,Remember Me test case 291,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Password Policy,TID-292,Password Policy test case 292,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+Account Lock,TID-293,Account Lock test case 293,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Multi-device Login,TID-294,Multi-device Login test case 294,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+API Error Handling,TID-295,API Error Handling test case 295,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Remember Me,TID-296,Remember Me test case 296,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes
+Password Policy,TID-297,Password Policy test case 297,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+Account Lock,TID-298,Account Lock test case 298,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,Yes
+Multi-device Login,TID-299,Multi-device Login test case 299,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,Medium,No
+API Error Handling,TID-300,API Error Handling test case 300,Preconditions satisfied,"1. Launch application
+2. Execute scenario
+3. Validate response
+4. Verify logs",Expected result achieved,,Not Executed,,,High,Yes

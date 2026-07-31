@@ -1,0 +1,2 @@
+# print("Hello" + 15) -> This will give an error because we are trying to concatenate a string with an integer. To fix this, we need to convert the integer to a string using the str() function.
+print("Hello" + str(15))
