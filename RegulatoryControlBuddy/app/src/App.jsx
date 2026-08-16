@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import * as XLSX from "xlsx";
 import JSZip from "jszip";
 
+
 /* ── CSV escape helper ──────────────────────────────── */
 function csvCell(v) {
   const s = String(v ?? "").replace(/"/g, '""');
@@ -9,208 +10,249 @@ function csvCell(v) {
 }
 function csvRow(cells) { return cells.map(csvCell).join(","); }
 
-/* ── Test Case Generator ────────────────────────────── */
-function generateTestCases(cc, embargoCtries, sanctionCtries, dosEcns, dosDecision) {
-  const CC = cc.toUpperCase();
-  const embargoSample  = embargoCtries.slice(0,3).join(", ") || "TZ";
-  const sanctionSample = sanctionCtries.slice(0,3).join(", ") || "CF";
-  const nonSancSample  = "JP, AU, DE";
-  const dosEcnSample   = dosEcns.slice(0,2).join(", ") || "ML1";
-  const regEcnSample   = "3A001, 5A002";
+/* ── Test Case Generator — decision-specific ─────────── */
+const HDR = ["Test Case ID","Test Suite","Test Module","Test Case Title","Test Case Description",
+             "Pre-Conditions","Test Steps","Test Data (Input)","Expected Result",
+             "Actual Result","Status","Priority","Remarks"];
 
-  const rows = [
-    // Header
-    ["Test Case ID","Test Suite","Test Module","Test Case Title","Test Case Description","Pre-Conditions","Test Steps","Test Data (Input)","Expected Result","Actual Result","Status","Priority","Remarks"],
+function tc(id, mod, title, desc, pre, steps, data, exp, pri, rem = "") {
+  return [id,"Export Controls",mod,title,desc,pre,steps,data,exp,"","Not Executed",pri,rem];
+}
 
-    // ── Full Embargo ──
-    [`TC-${CC}-001`,"Export Controls","Full Embargo Check",
-     `${CC}: Destination is a Full Embargo Country`,
-     `Verify that when the destination has ABSOLUTE flag = Y the system returns Embargo decision with EL license.`,
-     `LCS_ABSOLUTE_EMBARGO table contains destination country with ABSOLUTE = Y.`,
-     `1. Create order with Export Ctry = ${CC}. 2. Set Import Ctry to a full embargo country (${embargoSample}). 3. Run License Determination. 4. Check decision and license.`,
-     `Export=${CC}, Import=${embargoSample}, ECN=NOCLASS, DOS=N`,
-     `Decision = Embargo; License = EL; Hold = DOC Hold`,
-     "","Not Executed","Critical","ABSOLUTE=Y in LCS_ABSOLUTE_EMBARGO"],
+function generateTestCases(cc, _e, _s, _d, dosDecision) {
+  const CC  = cc.toUpperCase();
+  const EC  = "TZ";   // sample embargo country
+  const SC  = "CF";   // sample sanction country
+  const NC  = "JP";   // sample non-sanction country
+  const ECN = "ML1";  // sample DOS=Y ECCN
+  const REG = "3A001"; // sample dual-use ECCN
 
-    [`TC-${CC}-002`,"Export Controls","Full Embargo Check",
-     `${CC}: Destination is NOT a Full Embargo Country`,
-     `Verify that a non-embargo destination proceeds to the Sanction check.`,
-     `Destination country is NOT in LCS_ABSOLUTE_EMBARGO with ABSOLUTE = Y.`,
-     `1. Create order with Export Ctry = ${CC}. 2. Set Import Ctry = ${nonSancSample.split(",")[0].trim()}. 3. Run License Determination. 4. Verify flow proceeds past embargo check.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN=NOCLASS, DOS=N`,
-     `System does not return Embargo decision; proceeds to Sanction check.`,
-     "","Not Executed","High",""],
+  const rows = [HDR];
 
-    // ── Sanction ──
-    [`TC-${CC}-003`,"Export Controls","Sanction Check",
-     `${CC}: Sanction Country + Military End Use`,
-     `Verify that a sanction destination with Military end use returns EL DOC Hold with Sanctions may apply comment.`,
-     `Destination has ABSOLUTE=N in LCS_ABSOLUTE_EMBARGO. Order has Military end use.`,
-     `1. Create order Export=${CC}. 2. Set Import Ctry = ${sanctionSample.split(",")[0].trim()} (sanction). 3. Set End Use = Military. 4. Run License Determination.`,
-     `Export=${CC}, Import=${sanctionSample.split(",")[0].trim()}, EndUse=Military, ECN=NOCLASS, DOS=N`,
-     `License = EL; Hold = DOC Hold; Comments include "Sanctions may apply"`,
-     "","Not Executed","Critical",""],
+  if (dosDecision === "EL") {
+    rows.push(
+      tc(`TC-${CC}-001`,"Full Embargo","Full embargo destination → EL",
+        `Verify destination with ABSOLUTE=Y returns EL (DOC Hold).`,
+        `${EC} has ABSOLUTE=Y in LCS_ABSOLUTE_EMBARGO.`,
+        `1. Export=${CC}. 2. Import=${EC}. 3. ECN=NOCLASS. 4. Run License Determination.`,
+        `Export=${CC}, Import=${EC}, ECN=NOCLASS, DOS=N`,
+        `Decision=Embargo; License=EL; Hold=DOC Hold`,"Critical","First gate — no further processing"),
 
-    [`TC-${CC}-004`,"Export Controls","Sanction Check",
-     `${CC}: Sanction Country + Military Intelligence End Use`,
-     `Verify Military Intelligence end use (added 08/03/21) is treated same as Military for sanction countries.`,
-     `Destination is sanction country (ABSOLUTE=N). Order has Military Intelligence end use.`,
-     `1. Create order Export=${CC}. 2. Set Import Ctry = ${sanctionSample.split(",")[0].trim()}. 3. Set End Use = Military Intelligence. 4. Run License Determination.`,
-     `Export=${CC}, Import=${sanctionSample.split(",")[0].trim()}, EndUse=Military Intelligence, ECN=NOCLASS, DOS=N`,
-     `License = EL; Hold = DOC Hold; Comments include "Sanctions may apply"`,
-     "","Not Executed","Critical","Military Intelligence check added 08/03/21"],
+      tc(`TC-${CC}-002`,"Sanction Check","Sanction + Military → EL",
+        `Verify sanction country with Military end use returns EL (DOC Hold) + Sanctions comment.`,
+        `${SC} has ABSOLUTE=N. Order end use = Military.`,
+        `1. Export=${CC}. 2. Import=${SC}. 3. EndUse=Military. 4. ECN=NOCLASS DOS=N. 5. Run.`,
+        `Export=${CC}, Import=${SC}, EndUse=Military, ECN=NOCLASS, DOS=N`,
+        `License=EL; Hold=DOC Hold; Comments="Sanctions may apply"`,"Critical",""),
 
-    [`TC-${CC}-005`,"Export Controls","Sanction Check",
-     `${CC}: Sanction Country + Non-Military + DOS=Y (Munitions List)`,
-     `Verify sanction + non-military + DOS=Y returns ${dosDecision} DOS Hold with Sanctions may apply comment.`,
-     `Destination is sanction country. Item has ECN.DOS=Y. End use = Commercial.`,
-     `1. Create order Export=${CC}. 2. Import = ${sanctionSample.split(",")[0].trim()} (sanction). 3. EndUse=Commercial. 4. ECN=${dosEcnSample.split(",")[0].trim()} (DOS=Y). 5. Run License Determination.`,
-     `Export=${CC}, Import=${sanctionSample.split(",")[0].trim()}, ECN=${dosEcnSample.split(",")[0].trim()}, DOS=Y, EndUse=Commercial`,
-     `License = ${dosDecision}; Hold = DOS Hold; Comments include "Sanctions may apply"`,
-     "","Not Executed","Critical",""],
+      tc(`TC-${CC}-003`,"Sanction Check","Sanction + Military Intelligence → EL",
+        `Verify Military Intelligence end use (08/03/21 revision) also returns EL + Sanctions comment.`,
+        `${SC} has ABSOLUTE=N. Order end use = Military Intelligence.`,
+        `1. Export=${CC}. 2. Import=${SC}. 3. EndUse=Military Intelligence. 4. Run.`,
+        `Export=${CC}, Import=${SC}, EndUse=Military Intelligence, ECN=NOCLASS, DOS=N`,
+        `License=EL; Hold=DOC Hold; Comments="Sanctions may apply"`,"Critical","Added 08/03/21"),
 
-    [`TC-${CC}-006`,"Export Controls","Sanction Check",
-     `${CC}: Sanction Country + Non-Military + DOS=N + NOCLASS`,
-     `Verify sanction + non-military + NOCLASS ECN returns NLR with Sanctions may apply comment.`,
-     `Destination is sanction country. ECN.DOS=N. ECN=NOCLASS. EndUse=Commercial.`,
-     `1. Create order Export=${CC}. 2. Import = ${sanctionSample.split(",")[0].trim()}. 3. EndUse=Commercial. 4. ECN=NOCLASS DOS=N. 5. Run License Determination.`,
-     `Export=${CC}, Import=${sanctionSample.split(",")[0].trim()}, ECN=NOCLASS, DOS=N, EndUse=Commercial`,
-     `Decision = NLR; Comments include "Sanctions may apply"`,
-     "","Not Executed","High","Sanctions comment flows through even for NLR"],
+      tc(`TC-${CC}-004`,"Sanction Check","Sanction + Non-Military + Classified ECN → EL",
+        `Verify sanction + commercial end use + dual-use ECN returns EL (DOC Hold) + Sanctions comment.`,
+        `${SC} sanction country. ECN.DOS=N. ECN=${REG}.`,
+        `1. Export=${CC}. 2. Import=${SC}. 3. EndUse=Commercial. 4. ECN=${REG} DOS=N. 5. Run.`,
+        `Export=${CC}, Import=${SC}, EndUse=Commercial, ECN=${REG}, DOS=N`,
+        `License=EL; Hold=DOC Hold; Comments="Sanctions may apply"`,"High",""),
 
-    [`TC-${CC}-007`,"Export Controls","Sanction Check",
-     `${CC}: Sanction Country + Non-Military + DOS=N + Classified ECN`,
-     `Verify sanction + non-military + classified ECN returns EL DOC Hold with Sanctions may apply comment.`,
-     `Destination is sanction country. ECN.DOS=N. ECN is a specific dual-use code. EndUse=Commercial.`,
-     `1. Create order Export=${CC}. 2. Import = ${sanctionSample.split(",")[0].trim()}. 3. EndUse=Commercial. 4. ECN=${regEcnSample.split(",")[0].trim()} DOS=N. 5. Run.`,
-     `Export=${CC}, Import=${sanctionSample.split(",")[0].trim()}, ECN=${regEcnSample.split(",")[0].trim()}, DOS=N, EndUse=Commercial`,
-     `License = EL; Hold = DOC Hold; Comments include "Sanctions may apply"`,
-     "","Not Executed","High",""],
+      tc(`TC-${CC}-005`,"ECN Classification","Non-sanction + Classified ECN → EL",
+        `Verify non-sanction destination with classified ECN returns EL (DOC Hold) without sanctions comment.`,
+        `${NC} is NOT in embargo/sanction lists. ECN=${REG} DOS=N.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN=${REG} DOS=N. 4. EndUse=Commercial. 5. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=${REG}, DOS=N, EndUse=Commercial`,
+        `License=EL; Hold=DOC Hold; No sanctions comment`,"Critical",""),
 
-    [`TC-${CC}-008`,"Export Controls","Sanction Check",
-     `${CC}: Non-Sanction Country — No Sanctions Comment`,
-     `Verify that non-sanction destination does not get Sanctions may apply comment.`,
-     `Destination is NOT in LCS_ABSOLUTE_EMBARGO.`,
-     `1. Create order Export=${CC}. 2. Import = ${nonSancSample.split(",")[0].trim()} (non-sanction). 3. EndUse=Commercial. 4. ECN=NOCLASS. 5. Run.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN=NOCLASS, DOS=N, EndUse=Commercial`,
-     `No Sanctions may apply comment; Decision = NLR`,
-     "","Not Executed","High",""],
+      tc(`TC-${CC}-006`,"ECN Classification","NULL ECN must NOT return NLR → EL",
+        `Verify that NULL/empty ECN is held for review as EL and NOT treated as NOCLASS.`,
+        `Item has no ECN assigned. Destination is non-sanction.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN=NULL. 4. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=NULL, DOS=N`,
+        `License=EL; Hold=DOC Hold`,"Critical","Security: unclassified items must never get NLR"),
 
-    // ── DOS / Munitions ──
-    [`TC-${CC}-009`,"Export Controls","ECN.DOS Check",
-     `${CC}: ECN.DOS = Y — Munitions List Item`,
-     `Verify that when ECN.DOS=Y the system returns ${dosDecision} with DOS Hold.`,
-     `Item is classified under Military Goods List (ECN.DOS=Y). Destination is non-sanction, non-embargo.`,
-     `1. Create order Export=${CC}. 2. Import = ${nonSancSample.split(",")[0].trim()}. 3. Use item with ECN.DOS=Y (${dosEcnSample.split(",")[0].trim()}). 4. Run.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN=${dosEcnSample.split(",")[0].trim()}, DOS=Y`,
-     `License = ${dosDecision}; Hold = DOS Hold`,
-     "","Not Executed","Critical",""],
+      tc(`TC-${CC}-007`,"Edge Cases","NOCLASS with trailing space → EL (not NLR)",
+        `Verify ECN='NOCLASS ' (trailing space) does NOT trigger NLR — should return EL.`,
+        `ECN field contains 'NOCLASS ' with whitespace due to data entry error.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN='NOCLASS ' (trailing space). 4. Run.`,
+        `Export=${CC}, Import=${NC}, ECN='NOCLASS ' (trailing space), DOS=N`,
+        `System trims OR returns EL/DOC Hold — must NOT return NLR`,"Medium","Security edge case"),
 
-    [`TC-${CC}-010`,"Export Controls","ECN.DOS Check",
-     `${CC}: ECN.DOS = N — Proceeds to NOCLASS Check`,
-     `Verify that ECN.DOS=N does not trigger DOS Hold and flow continues to NOCLASS check.`,
-     `Item is NOT on Munitions List (ECN.DOS=N). Destination is non-sanction, non-embargo.`,
-     `1. Create order Export=${CC}. 2. Import = ${nonSancSample.split(",")[0].trim()}. 3. ECN=NOCLASS DOS=N. 4. Run.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN=NOCLASS, DOS=N`,
-     `No DOS Hold; system proceeds to ECN = NOCLASS check`,
-     "","Not Executed","High",""],
+      tc(`TC-${CC}-008`,"End-to-End","E2E: Full embargo → EL (no further processing)",
+        `Confirm embargo check is the first gate and stops all further processing.`,
+        `Embargo country in LCS_ABSOLUTE_EMBARGO (ABSOLUTE=Y). ECN would qualify for NLR.`,
+        `1. Export=${CC}. 2. Import=${EC}. 3. ECN=NOCLASS. 4. Run. 5. Confirm ECN check NOT reached.`,
+        `Export=${CC}, Import=${EC}, ECN=NOCLASS, DOS=N`,
+        `Decision=Embargo; License=EL; Hold=DOC Hold; System stops`,"Critical",""),
 
-    // ── NOCLASS ──
-    [`TC-${CC}-011`,"Export Controls","ECN Classification",
-     `${CC}: ECN = NOCLASS — No Dual Use License Required`,
-     `Verify that ECN=NOCLASS returns NLR (No License Required).`,
-     `Item ECN=NOCLASS. ECN.DOS=N. Non-sanction, non-embargo destination.`,
-     `1. Create order Export=${CC}. 2. Import = ${nonSancSample.split(",")[0].trim()}. 3. ECN=NOCLASS DOS=N. 4. EndUse=Commercial. 5. Run.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN=NOCLASS, DOS=N`,
-     `Decision = NLR (No Dual Use License Required)`,
-     "","Not Executed","Critical","Primary happy path"],
+      tc(`TC-${CC}-009`,"End-to-End","E2E: Sanction + Military + any ECN → EL",
+        `Confirm sanction + military combination always results in EL regardless of ECN.`,
+        `${SC} sanction country. End use = Military.`,
+        `1. Export=${CC}. 2. Import=${SC}. 3. EndUse=Military. 4. ECN=${REG} DOS=N. 5. Run.`,
+        `Export=${CC}, Import=${SC}, EndUse=Military, ECN=${REG}, DOS=N`,
+        `License=EL; Hold=DOC Hold; Comments="Sanctions may apply"`,"Critical",""),
 
-    [`TC-${CC}-012`,"Export Controls","ECN Classification",
-     `${CC}: ECN has Classified Code (Not NOCLASS) — EL DOC Hold`,
-     `Verify that a specific dual-use ECN code returns EL with DOC Hold.`,
-     `Item has specific ECN code (not NOCLASS). ECN.DOS=N. Non-sanction, non-embargo.`,
-     `1. Create order Export=${CC}. 2. Import = ${nonSancSample.split(",")[0].trim()}. 3. ECN=${regEcnSample.split(",")[0].trim()} DOS=N. 4. Run.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN=${regEcnSample.split(",")[0].trim()}, DOS=N`,
-     `License = EL; Hold = DOC Hold`,
-     "","Not Executed","Critical",""],
+      tc(`TC-${CC}-010`,"End-to-End","E2E: Real-time embargo table update → EL immediate",
+        `Verify newly embargoed country triggers EL immediately without system restart.`,
+        `CountryX added to LCS_ABSOLUTE_EMBARGO during live run.`,
+        `1. Process order for CountryX — no embargo. 2. Add CountryX (ABSOLUTE=Y). 3. New order for CountryX. 4. Verify EL without restart.`,
+        `Export=${CC}, Import=CountryX (newly embargoed), ECN=NOCLASS`,
+        `New order returns EL Embargo decision immediately`,"High","")
+    );
 
-    [`TC-${CC}-013`,"Export Controls","ECN Classification",
-     `${CC}: ECN = NULL — Should NOT Return NLR`,
-     `Verify that NULL/empty ECN does not get treated as NOCLASS — must be held for review.`,
-     `Item has no ECN classification. ECN.DOS=N.`,
-     `1. Create order Export=${CC}. 2. Import = ${nonSancSample.split(",")[0].trim()}. 3. ECN=NULL. 4. Run.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN=NULL, DOS=N`,
-     `License = EL; Hold = DOC Hold (NULL must NOT return NLR)`,
-     "","Not Executed","Critical","Security-critical: unclassified items must not be released"],
+  } else if (dosDecision === "ML") {
+    rows.push(
+      tc(`TC-${CC}-001`,"ECN.DOS Check","Non-sanction + DOS=Y → ML (DOS Hold)",
+        `Verify that when ECN.DOS=Y and destination is non-sanction the system returns ML (DOS Hold).`,
+        `${NC} is NOT in embargo/sanction lists. Item ECN=${ECN} with DOS=Y flag.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN=${ECN} DOS=Y. 4. EndUse=Commercial. 5. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=${ECN}, DOS=Y, EndUse=Commercial`,
+        `License=ML; Hold=DOS Hold`,"Critical",""),
 
-    // ── End-to-End ──
-    [`TC-${CC}-014`,"Export Controls","End-to-End",
-     `${CC}: E2E Happy Path — NLR`,
-     `Full end-to-end: non-embargo, non-sanction destination with NOCLASS item returns NLR.`,
-     `All master data configured. Destination has no embargo/sanction flags.`,
-     `1. Export=${CC}. 2. Import=${nonSancSample.split(",")[0].trim()} (clean). 3. ECN=NOCLASS DOS=N. 4. EndUse=Commercial. 5. Run.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN=NOCLASS, DOS=N, EndUse=Commercial`,
-     `Decision = NLR; No holds; No comments`,
-     "","Not Executed","Critical","Primary happy path"],
+      tc(`TC-${CC}-002`,"Sanction Check","Sanction + Non-Military + DOS=Y → ML + Sanctions comment",
+        `Verify sanction country + non-military + DOS=Y returns ML (DOS Hold) with Sanctions may apply.`,
+        `${SC} sanction country. Item ECN.DOS=Y. EndUse=Commercial.`,
+        `1. Export=${CC}. 2. Import=${SC}. 3. EndUse=Commercial. 4. ECN=${ECN} DOS=Y. 5. Run.`,
+        `Export=${CC}, Import=${SC}, ECN=${ECN}, DOS=Y, EndUse=Commercial`,
+        `License=ML; Hold=DOS Hold; Comments="Sanctions may apply"`,"Critical",""),
 
-    [`TC-${CC}-015`,"Export Controls","End-to-End",
-     `${CC}: E2E Full Embargo — Stops at First Check`,
-     `Full end-to-end: absolute embargo country stops processing immediately.`,
-     `Destination in LCS_ABSOLUTE_EMBARGO with ABSOLUTE=Y.`,
-     `1. Export=${CC}. 2. Import=${embargoSample.split(",")[0].trim()} (full embargo). 3. ECN=NOCLASS. 4. Run. 5. Verify no ECN processing happens.`,
-     `Export=${CC}, Import=${embargoSample.split(",")[0].trim()}, ECN=NOCLASS, DOS=N`,
-     `Decision = Embargo; License = EL; Hold = DOC Hold; No further processing`,
-     "","Not Executed","Critical","Embargo check must be the first gate"],
+      tc(`TC-${CC}-003`,"ECN.DOS Check","DOS=N must NOT return ML",
+        `Verify that when ECN.DOS=N the ML path is NOT triggered — flow continues to NOCLASS check.`,
+        `Item ECN.DOS=N. Non-sanction destination.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN=NOCLASS DOS=N. 4. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=NOCLASS, DOS=N`,
+        `No ML license; system proceeds to ECN NOCLASS check`,"High","Negative test"),
 
-    [`TC-${CC}-016`,"Export Controls","End-to-End",
-     `${CC}: E2E Non-Sanction + DOS=Y — ${dosDecision} DOS Hold`,
-     `Full end-to-end: non-sanction destination with Munitions List item returns ${dosDecision} DOS Hold.`,
-     `Destination NOT in any embargo/sanction list. ECN.DOS=Y.`,
-     `1. Export=${CC}. 2. Import=${nonSancSample.split(",")[0].trim()}. 3. ECN=${dosEcnSample.split(",")[0].trim()} DOS=Y. 4. EndUse=Commercial. 5. Run.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN=${dosEcnSample.split(",")[0].trim()}, DOS=Y`,
-     `License = ${dosDecision}; Hold = DOS Hold; No sanctions comment`,
-     "","Not Executed","Critical",""],
+      tc(`TC-${CC}-004`,"ECN.DOS Check","Multiple lines: DOS=Y gets ML, DOS=N does not",
+        `Verify per-line evaluation — only the line with DOS=Y gets ML.`,
+        `Order has 2 lines: Line1 DOS=Y, Line2 DOS=N. Non-sanction destination.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. Line1: ECN=${ECN} DOS=Y. 4. Line2: ECN=NOCLASS DOS=N. 5. Run.`,
+        `Export=${CC}, Import=${NC}, Line1: ECN=${ECN} DOS=Y, Line2: ECN=NOCLASS DOS=N`,
+        `Line1=ML (DOS Hold); Line2=NLR`,"High","Per-line evaluation"),
 
-    // ── Edge Cases ──
-    [`TC-${CC}-017`,"Export Controls","Edge Cases",
-     `${CC}: ECN NOCLASS Case Sensitivity`,
-     `Verify whether ECN = 'noclass' (lowercase) is handled consistently.`,
-     `Item with ECN = lowercase 'noclass'.`,
-     `1. Export=${CC}. 2. Import=${nonSancSample.split(",")[0].trim()}. 3. ECN='noclass' (lowercase). 4. Run. 5. Compare with ECN=NOCLASS.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN=noclass (lowercase), DOS=N`,
-     `Document actual behavior — if case-sensitive: EL/DOC Hold; if case-insensitive: NLR`,
-     "","Not Executed","Medium","Data quality edge case"],
+      tc(`TC-${CC}-005`,"ECN.DOS Check","DOS flag case sensitivity (lowercase 'y')",
+        `Verify that ECN.DOS='y' (lowercase) is treated same as 'Y' and returns ML.`,
+        `ECN.DOS field contains lowercase 'y'.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN.DOS='y' (lowercase). 4. Run. 5. Compare with DOS='Y'.`,
+        `Export=${CC}, Import=${NC}, ECN=${ECN}, DOS=y (lowercase)`,
+        `System handles both 'y' and 'Y' consistently — returns ML (DOS Hold)`,"Medium",""),
 
-    [`TC-${CC}-018`,"Export Controls","Edge Cases",
-     `${CC}: Multiple Lines with Different ECN Values`,
-     `Verify that license determination runs per-line and each line gets its own decision.`,
-     `Order has multiple lines with different ECN classifications.`,
-     `1. Create order Export=${CC}. 2. Import=${nonSancSample.split(",")[0].trim()}. 3. Line1: ECN=NOCLASS. 4. Line2: ECN=${regEcnSample.split(",")[0].trim()}. 5. Run.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, Line1: ECN=NOCLASS, Line2: ECN=${regEcnSample.split(",")[0].trim()}`,
-     `Line1 = NLR; Line2 = EL (DOC Hold); Results are per-line`,
-     "","Not Executed","High",""],
+      tc(`TC-${CC}-006`,"Sanction Check","Sanction + Military + DOS=Y → EL (not ML)",
+        `Verify Military end use on sanction country returns EL regardless of DOS flag — sanction+military check comes first.`,
+        `${SC} sanction country. EndUse=Military. ECN.DOS=Y.`,
+        `1. Export=${CC}. 2. Import=${SC}. 3. EndUse=Military. 4. ECN=${ECN} DOS=Y. 5. Run.`,
+        `Export=${CC}, Import=${SC}, EndUse=Military, ECN=${ECN}, DOS=Y`,
+        `License=EL; Hold=DOC Hold (Military check overrides DOS check for sanction countries)`,"Critical","Order of checks matters"),
 
-    [`TC-${CC}-019`,"Export Controls","Edge Cases",
-     `${CC}: Real-Time Embargo Table Update`,
-     `Verify that adding a new country to LCS_ABSOLUTE_EMBARGO is effective immediately.`,
-     `System is live. New country being added to embargo table.`,
-     `1. Process order for CountryX — verify no embargo. 2. Add CountryX to LCS_ABSOLUTE_EMBARGO (ABSOLUTE=Y). 3. Process new order for CountryX. 4. Verify embargo decision without restart.`,
-     `Export=${CC}, Import=CountryX (newly embargoed), ECN=NOCLASS`,
-     `New order returns Embargo decision immediately after table update`,
-     "","Not Executed","High","Tests real-time table-driven configuration"],
+      tc(`TC-${CC}-007`,"End-to-End","E2E: Non-sanction + DOS=Y → ML with no extra comments",
+        `Full end-to-end: clean destination + munitions item returns ML only (no sanctions comment).`,
+        `${NC} non-sanction. ECN.DOS=Y.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN=${ECN} DOS=Y. 4. EndUse=Commercial. 5. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=${ECN}, DOS=Y, EndUse=Commercial`,
+        `License=ML; Hold=DOS Hold; No sanctions comment`,"Critical",""),
 
-    [`TC-${CC}-020`,"Export Controls","Edge Cases",
-     `${CC}: ECN with Trailing Spaces Should Not Match NOCLASS`,
-     `Verify 'NOCLASS ' (with trailing space) does NOT incorrectly trigger NLR.`,
-     `ECN field may contain data with spaces due to data entry.`,
-     `1. Export=${CC}. 2. Import=${nonSancSample.split(",")[0].trim()}. 3. ECN='NOCLASS ' (trailing space). 4. Run.`,
-     `Export=${CC}, Import=${nonSancSample.split(",")[0].trim()}, ECN='NOCLASS ' (trailing space), DOS=N`,
-     `System should trim OR return EL/DOC Hold — must NOT return NLR for malformed NOCLASS`,
-     "","Not Executed","Medium","Security edge case — malformed NOCLASS must not release"],
-  ];
+      tc(`TC-${CC}-008`,"End-to-End","E2E: Real-time Munitions List ECCN addition → ML",
+        `Verify newly added DOS=Y ECCN triggers ML immediately without restart.`,
+        `New ECCN being added to Munitions List in the DB.`,
+        `1. Process order with NewECCN — verify no ML. 2. Set NewECCN DOS=Y in system. 3. New order with same ECCN. 4. Verify ML without restart.`,
+        `Export=${CC}, Import=${NC}, ECN=NewECCN (newly flagged DOS=Y)`,
+        `New order returns ML (DOS Hold) immediately after ECCN update`,"High","Real-time config test"),
+
+      tc(`TC-${CC}-009`,"Edge Cases","Embargo country with DOS=Y item → EL (not ML)",
+        `Verify embargo check (first gate) returns EL and never reaches the DOS=Y ML check.`,
+        `${EC} full embargo country. Item has DOS=Y.`,
+        `1. Export=${CC}. 2. Import=${EC}. 3. ECN=${ECN} DOS=Y. 4. Run.`,
+        `Export=${CC}, Import=${EC}, ECN=${ECN}, DOS=Y`,
+        `Decision=Embargo; License=EL; Hold=DOC Hold — ML check never reached`,"Critical","First gate always wins"),
+
+      tc(`TC-${CC}-010`,"Edge Cases","NULL ECN.DOS flag → not ML",
+        `Verify NULL ECN.DOS flag is treated as N (not Y) and does NOT return ML.`,
+        `Item has ECN.DOS=NULL.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN.DOS=NULL. 4. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=${ECN}, DOS=NULL`,
+        `No ML; system treats NULL DOS as N and proceeds to NOCLASS check`,"Medium","NULL handling")
+    );
+
+  } else { // NLR
+    rows.push(
+      tc(`TC-${CC}-001`,"ECN Classification","NOCLASS ECN → NLR",
+        `Verify that ECN=NOCLASS on a non-sanction non-embargo destination returns NLR.`,
+        `${NC} is NOT in embargo/sanction lists. ECN=NOCLASS. DOS=N.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN=NOCLASS DOS=N. 4. EndUse=Commercial. 5. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=NOCLASS, DOS=N, EndUse=Commercial`,
+        `Decision=NLR (No Dual Use License Required)`,"Critical","Primary happy path"),
+
+      tc(`TC-${CC}-002`,"Sanction Check","Sanction + Non-Military + NOCLASS → NLR + Sanctions comment",
+        `Verify sanction + non-military + NOCLASS still returns NLR but adds Sanctions may apply comment.`,
+        `${SC} sanction country. ECN.DOS=N. ECN=NOCLASS. EndUse=Commercial.`,
+        `1. Export=${CC}. 2. Import=${SC}. 3. EndUse=Commercial. 4. ECN=NOCLASS DOS=N. 5. Run.`,
+        `Export=${CC}, Import=${SC}, ECN=NOCLASS, DOS=N, EndUse=Commercial`,
+        `Decision=NLR; Comments="Sanctions may apply"`,"High","Sanctions comment present even for NLR"),
+
+      tc(`TC-${CC}-003`,"ECN Classification","Classified ECN must NOT return NLR",
+        `Verify that a specific dual-use ECN code never returns NLR.`,
+        `Item ECN=3A001. Destination non-sanction.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN=3A001 DOS=N. 4. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=3A001, DOS=N`,
+        `License=EL; Hold=DOC Hold — NOT NLR`,"Critical","Negative test"),
+
+      tc(`TC-${CC}-004`,"ECN Classification","NULL ECN must NOT return NLR",
+        `Verify NULL/empty ECN is NOT treated as NOCLASS and does NOT return NLR.`,
+        `Item has no ECN assigned.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN=NULL. 4. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=NULL, DOS=N`,
+        `License=EL; Hold=DOC Hold — NOT NLR`,"Critical","Security-critical"),
+
+      tc(`TC-${CC}-005`,"Edge Cases","NOCLASS with trailing space → NOT NLR",
+        `Verify ECN='NOCLASS ' (trailing space) does NOT match NOCLASS and does NOT return NLR.`,
+        `ECN field has 'NOCLASS ' with a trailing space.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN='NOCLASS ' (trailing space). 4. Run.`,
+        `Export=${CC}, Import=${NC}, ECN='NOCLASS ' (trailing space), DOS=N`,
+        `System trims OR returns EL/DOC Hold — must NOT return NLR`,"Medium","Security edge case"),
+
+      tc(`TC-${CC}-006`,"Edge Cases","NOCLASS case sensitivity — lowercase 'noclass'",
+        `Verify whether ECN='noclass' (lowercase) is handled consistently with NOCLASS.`,
+        `ECN field contains lowercase 'noclass'.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN='noclass' (lowercase). 4. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=noclass (lowercase), DOS=N`,
+        `Document behavior: if case-insensitive → NLR; if case-sensitive → EL/DOC Hold`,"Medium",""),
+
+      tc(`TC-${CC}-007`,"Edge Cases","Multiple lines: NOCLASS line → NLR, classified line → EL",
+        `Verify per-line evaluation — NOCLASS line gets NLR, classified line gets EL.`,
+        `Order has 2 lines. Non-sanction destination.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. Line1: ECN=NOCLASS DOS=N. 4. Line2: ECN=3A001 DOS=N. 5. Run.`,
+        `Export=${CC}, Import=${NC}, Line1: ECN=NOCLASS, Line2: ECN=3A001`,
+        `Line1=NLR; Line2=EL (DOC Hold)`,"High","Per-line evaluation"),
+
+      tc(`TC-${CC}-008`,"End-to-End","E2E: Happy path full NLR flow",
+        `Full end-to-end: non-embargo, non-sanction, NOCLASS item returns NLR with no holds or comments.`,
+        `All master data configured. Destination clean. Item NOCLASS.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN=NOCLASS DOS=N. 4. EndUse=Commercial. 5. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=NOCLASS, DOS=N, EndUse=Commercial`,
+        `Decision=NLR; No holds; No comments`,"Critical",""),
+
+      tc(`TC-${CC}-009`,"End-to-End","E2E: Embargo country with NOCLASS item → EL (not NLR)",
+        `Verify embargo check (first gate) returns EL even if item would qualify for NLR.`,
+        `${EC} full embargo country. ECN=NOCLASS.`,
+        `1. Export=${CC}. 2. Import=${EC}. 3. ECN=NOCLASS DOS=N. 4. Run.`,
+        `Export=${CC}, Import=${EC}, ECN=NOCLASS, DOS=N`,
+        `Decision=Embargo; License=EL — NOCLASS NLR check never reached`,"Critical","First gate always wins"),
+
+      tc(`TC-${CC}-010`,"End-to-End","E2E: DOS=Y item bypasses NOCLASS check → not NLR",
+        `Verify DOS=Y item goes to DOS Hold path and NEVER reaches NOCLASS check.`,
+        `${NC} non-sanction. ECN.DOS=Y.`,
+        `1. Export=${CC}. 2. Import=${NC}. 3. ECN=ML1 DOS=Y. 4. Run.`,
+        `Export=${CC}, Import=${NC}, ECN=ML1, DOS=Y`,
+        `DOS Hold returned — NOCLASS check bypassed; Decision is NOT NLR`,"High","")
+    );
+  }
 
   return rows.map(r => csvRow(r)).join("\r\n");
 }
+
+
 
 
 /* ── Constants ─────────────────────────────────────── */
@@ -369,12 +411,12 @@ function buildXls(scenario) {
 }
 
 /* ── File upload card ───────────────────────────────── */
-function FileCard({ label, hint, accept, file, onChange }) {
+function FileCard({ label, hint, accept, file, onChange, iconColor = "#7f6df2" }) {
   const ref = useRef();
   return (
     <div className={`file-card${file ? " file-card--loaded" : ""}`} onClick={() => ref.current.click()}>
       <input ref={ref} type="file" accept={accept} style={{ display: "none" }} onChange={e => onChange(e.target.files[0] || null)} />
-      <div className="file-card-icon">{file ? "✓" : "↑"}</div>
+      <div className="file-card-icon" style={file ? {} : { color: iconColor }}>{file ? "✓" : "↑"}</div>
       <div className="file-card-info">
         <div className="file-card-label">{label}</div>
         <div className="file-card-hint">{file ? file.name : hint}</div>
@@ -385,7 +427,7 @@ function FileCard({ label, hint, accept, file, onChange }) {
 
 /* ── Main App ───────────────────────────────────────── */
 export default function App() {
-  const [activeTab, setActiveTab]       = useState("testcases"); // testcases | scripts
+  const [activeTab, setActiveTab]       = useState("testcases");
   const [countryCode, setCountryCode]   = useState("");
   const [dosDecision, setDosDecision]   = useState("EL");
   const [embargoFile, setEmbargoFile]   = useState(null);
@@ -393,38 +435,47 @@ export default function App() {
   const [dosFile, setDosFile]           = useState(null);
 
   // Test Case Generator state
-  const [tcStatus, setTcStatus]   = useState("idle");
-  const [tcError, setTcError]     = useState("");
-  const [tcCount, setTcCount]     = useState(0);
-  const [tcPreview, setTcPreview] = useState([]);
+  const [tcStatus, setTcStatus]     = useState("idle");
+  const [tcError, setTcError]       = useState("");
+  const [tcLog, setTcLog]           = useState([]);
+  const [tcCsvText, setTcCsvText]   = useState("");
+  const [tcPreview, setTcPreview]   = useState([]);
 
   // XLS Script Generator state
   const [status, setStatus]   = useState("idle");
   const [log, setLog]         = useState([]);
   const [summary, setSummary] = useState(null);
   const [error, setError]     = useState("");
+  const [zipUrl, setZipUrl]   = useState(null);
+  const [zipName, setZipName] = useState("");
 
-  const canGenerate = countryCode.trim() && embargoFile && sanctionFile && dosFile;
+  const canGenerateTC      = !!countryCode.trim();
+  const canGenerateScripts = countryCode.trim() && embargoFile && sanctionFile && dosFile;
 
-  function addLog(msg) { setLog(prev => [...prev, msg]); }
+  function addTcLog(msg) { setTcLog(prev => [...prev, msg]); }
+  function addLog(msg)   { setLog(prev => [...prev, msg]); }
 
-  /* ── Test Case Generator ── */
+  /* ── Test Case Generator (template-based) ── */
   async function handleGenerateTestCases() {
-    setTcStatus("running"); setTcError(""); setTcCount(0); setTcPreview([]);
+    setTcStatus("running"); setTcError(""); setTcLog([]); setTcCsvText(""); setTcPreview([]);
     try {
       const cc = countryCode.trim().toUpperCase();
-      const [embargoCtries, sanctionCtries, dosEcns] = await Promise.all([
-        readColumnFromFile(embargoFile, 1),
-        readColumnFromFile(sanctionFile, 1),
-        readColumnFromFile(dosFile, 0),
-      ]);
-      const csv = generateTestCases(cc, embargoCtries, sanctionCtries, dosEcns, dosDecision);
-      const lines = csv.split("\r\n");
-      const count = lines.length - 1; // exclude header
-      setTcCount(count);
-      // Preview first 5 data rows
-      setTcPreview(lines.slice(1, 6).map(l => l.split(",").map(c => c.replace(/^"|"$/g,""))));
-
+      addTcLog(`Generating test cases for ${cc}…`);
+      const csv = generateTestCases(cc, [], [], [], dosDecision);
+      const lines = csv.split(/\r?\n/).filter(l => l.trim());
+      addTcLog(`✓ ${lines.length - 1} test cases generated`);
+      setTcCsvText(csv);
+      const preview = lines.slice(1, 6).map(l => {
+        const cells = []; let cur = ""; let inQ = false;
+        for (const ch of l) {
+          if (ch === '"') { inQ = !inQ; }
+          else if (ch === ',' && !inQ) { cells.push(cur); cur = ""; }
+          else cur += ch;
+        }
+        cells.push(cur);
+        return cells;
+      });
+      setTcPreview(preview);
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -438,7 +489,7 @@ export default function App() {
 
   /* ── XLS Script Generator ── */
   async function handleGenerateScripts() {
-    setStatus("running"); setLog([]); setSummary(null); setError("");
+    setStatus("running"); setLog([]); setSummary(null); setError(""); setZipUrl(null);
     try {
       const cc = countryCode.trim().toUpperCase();
       addLog(`Reading reference files for ${cc}…`);
@@ -450,7 +501,8 @@ export default function App() {
       addLog(`Embargo: ${embargoCtries.length}  Sanction: ${sanctionCtries.length}  DOS-Y ECCNs: ${dosEcns.length}`);
       addLog("Building 8 scenarios…");
       const scenarios = buildScenarios(embargoCtries, sanctionCtries, dosEcns, cc, dosDecision);
-      const zip = new JSZip(); const results = [];
+      const zip = new JSZip();
+      const results = [];
       for (const scenario of scenarios) {
         if (!scenario.rows.length) { addLog(`SKIP ${scenario.code}`); continue; }
         const fileName = `LREQ_${cc}_${scenario.code}_${scenario.title}_S000001-S${String(scenario.rows.length).padStart(6,"0")}.xls`;
@@ -461,8 +513,10 @@ export default function App() {
       addLog("Creating ZIP…");
       const zipBlob = await zip.generateAsync({ type: "blob" });
       const url = URL.createObjectURL(zipBlob);
-      const a = document.createElement("a"); a.href = url; a.download = `LREQ_${cc}_Scenarios.zip`; a.click();
-      URL.revokeObjectURL(url);
+      const fileName = `LREQ_${cc}_Scenarios.zip`;
+      const a = document.createElement("a");
+      a.href = url; a.download = fileName; a.click();
+      setZipUrl(url); setZipName(fileName);
       setSummary(results); setStatus("done"); addLog("Done — ZIP downloaded.");
     } catch (err) { setError(err.message); setStatus("error"); }
   }
@@ -506,13 +560,13 @@ export default function App() {
                     </label>
                   ))}
                 </div>
-                <div className="field-hint">Read from your country flowchart PDF (S3 & S6)</div>
+                <div className="field-hint">From your country flowchart (S3 & S6)</div>
               </label>
             </div>
           </div>
 
           <div className="section">
-            <div className="section-title"><span className="dot dot-blue" /> Reference Files</div>
+            <div className="section-title"><span className="dot dot-blue" /> Reference Files <span className="section-note">(XLS generator only)</span></div>
             <div className="section-body">
               <FileCard label="Absolute Embargo Countries" hint="Click to upload .xlsx  (col B = IMP_COUNTRY)" accept=".xlsx,.xls" file={embargoFile} onChange={setEmbargoFile} />
               <FileCard label="Sanction Country List"      hint="Click to upload .xlsx  (col B = IMP_COUNTRY)" accept=".xlsx,.xls" file={sanctionFile} onChange={setSanctionFile} />
@@ -521,8 +575,9 @@ export default function App() {
           </div>
 
           <div className="sidebar-footer">
-            <button className="btn-generate" onClick={activeTab === "testcases" ? handleGenerateTestCases : handleGenerateScripts}
-              disabled={!canGenerate || status === "running" || tcStatus === "running"}>
+            <button className="btn-generate"
+              onClick={activeTab === "testcases" ? handleGenerateTestCases : handleGenerateScripts}
+              disabled={activeTab === "testcases" ? (!canGenerateTC || tcStatus === "running") : (!canGenerateScripts || status === "running")}>
               {(status === "running" || tcStatus === "running") ? "Generating…"
                 : activeTab === "testcases" ? "Generate Test Cases CSV"
                 : "Generate & Download ZIP"}
@@ -558,58 +613,77 @@ export default function App() {
                   {tcStatus === "idle" && (
                     <div className="empty-state">
                       <div className="empty-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#7f6df2" strokeWidth="1.5">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f0abfc" strokeWidth="1.5">
                           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                           <polyline points="14 2 14 8 20 8"/>
                           <line x1="16" y1="13" x2="8" y2="13"/>
                           <line x1="16" y1="17" x2="8" y2="17"/>
                         </svg>
                       </div>
-                      <div className="empty-title">20 Test Cases — All Flowchart Paths</div>
-                      <div className="empty-sub">Upload the 3 reference Excel files, set country code and DOS decision, then click Generate Test Cases CSV.</div>
-                      <div className="tc-coverage">
-                        {[
-                          { mod:"Full Embargo Check",   tcs:2, color:"#f87171" },
-                          { mod:"Sanction Check",       tcs:6, color:"#fbbf24" },
-                          { mod:"ECN.DOS Check",        tcs:2, color:"#818cf8" },
-                          { mod:"ECN Classification",   tcs:3, color:"#34d399" },
-                          { mod:"End-to-End Paths",     tcs:3, color:"#60a5fa" },
-                          { mod:"Edge Cases",           tcs:4, color:"#a78bfa" },
-                        ].map(m => (
-                          <div key={m.mod} className="coverage-row">
-                            <span className="cov-dot" style={{background:m.color}} />
-                            <span className="cov-mod">{m.mod}</span>
-                            <span className="cov-count">{m.tcs} TCs</span>
-                          </div>
+                      <div className="empty-title">Test Case Generator</div>
+                      <div className="empty-sub">
+                        1. Enter your country code (e.g. <strong>HK</strong>)<br/>
+                        2. Select the DOS=Y decision from your flowchart<br/>
+                        3. Click <strong>Generate Test Cases CSV</strong>
+                      </div>
+                      <div className="ai-flow">
+                        {["Enter Country", "Select DOS Decision", "Click Generate", "CSV Downloads"].map((step, i, arr) => (
+                          <React.Fragment key={step}>
+                            <div className="ai-step">{step}</div>
+                            {i < arr.length - 1 && <div className="ai-arrow">→</div>}
+                          </React.Fragment>
                         ))}
                       </div>
                     </div>
                   )}
-                  {tcStatus === "running" && <div className="log-area"><div className="log-line">Generating test cases…</div></div>}
-                  {tcError && <div className="log-area"><div className="log-line log-error">✗ {tcError}</div></div>}
+                  {(tcStatus === "running" || tcStatus === "error") && (
+                    <div className="log-area">
+                      {tcLog.map((l, i) => <div key={i} className={`log-line${l.startsWith("✓") ? " log-ok" : ""}`}>{l}</div>)}
+                      {tcStatus === "running" && <div className="log-line log-spin">⏳ Waiting for AI response…</div>}
+                      {tcError && <div className="log-line log-error">✗ {tcError}</div>}
+                    </div>
+                  )}
+
                   {tcStatus === "done" && (
                     <div className="tc-result">
+                      <div className="log-area" style={{marginBottom:"16px"}}>
+                        {tcLog.map((l, i) => <div key={i} className={`log-line${l.startsWith("✓") ? " log-ok" : ""}`}>{l}</div>)}
+                      </div>
                       <div className="tc-result-banner">
-                        <span className="tc-result-count">{tcCount}</span>
-                        <span className="tc-result-label">Test Cases generated and downloaded as CSV</span>
+                        <span className="tc-result-count">{tcCsvText.split(/\r?\n/).filter(l=>l.trim()).length - 1}</span>
+                        <div>
+                          <div className="tc-result-label">Test Cases generated from flowchart PDF</div>
+                          <div style={{fontSize:"0.72rem",color:"#4a5470",marginTop:"4px"}}>CSV downloaded automatically</div>
+                        </div>
+                        <button className="btn-redownload" onClick={() => {
+                          const blob = new Blob([tcCsvText], {type:"text/csv;charset=utf-8;"});
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement("a");
+                          a.href=url; a.download=`${countryCode}_Export_Controls_TestCases.csv`; a.click();
+                          URL.revokeObjectURL(url);
+                        }}>↓ Re-download</button>
                       </div>
-                      <div className="tc-preview-title">Preview (first 5 rows)</div>
-                      <div className="tc-table-wrap">
-                        <table className="tc-table">
-                          <thead><tr><th>Test Case ID</th><th>Module</th><th>Title</th><th>Expected Result</th><th>Priority</th></tr></thead>
-                          <tbody>
-                            {tcPreview.map((row, i) => (
-                              <tr key={i}>
-                                <td className="tc-code">{row[0]}</td>
-                                <td>{row[2]}</td>
-                                <td className="tc-title-cell">{row[3]}</td>
-                                <td className="tc-expected">{row[8]}</td>
-                                <td><span className={`pri-chip pri-${(row[11]||"").toLowerCase()}`}>{row[11]}</span></td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
+                      {tcPreview.length > 0 && (
+                        <>
+                          <div className="tc-preview-title">Preview — first 5 rows</div>
+                          <div className="tc-table-wrap">
+                            <table className="tc-table">
+                              <thead><tr><th>Test Case ID</th><th>Module</th><th>Title</th><th>Expected Result</th><th>Priority</th></tr></thead>
+                              <tbody>
+                                {tcPreview.map((row, i) => (
+                                  <tr key={i}>
+                                    <td className="tc-code">{row[0]}</td>
+                                    <td>{row[2]}</td>
+                                    <td className="tc-title-cell">{row[3]}</td>
+                                    <td className="tc-expected">{row[8]}</td>
+                                    <td><span className={`pri-chip pri-${(row[11]||"").toLowerCase()}`}>{row[11]}</span></td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </>
+                      )}
                     </div>
                   )}
                 </>
@@ -657,7 +731,14 @@ export default function App() {
                   )}
                   {summary && (
                     <div className="summary">
-                      <div className="summary-title">Summary — {countryCode.toUpperCase()}</div>
+                      <div className="summary-title-row">
+                        <div className="summary-title">Summary — {countryCode.toUpperCase()}</div>
+                        {zipUrl && (
+                          <a className="btn-zip-download" href={zipUrl} download={zipName}>
+                            ↓ Download ZIP
+                          </a>
+                        )}
+                      </div>
                       <table className="summary-table">
                         <thead><tr><th>Scenario</th><th>Title</th><th>Folder</th><th>Decision</th><th>Rows</th></tr></thead>
                         <tbody>

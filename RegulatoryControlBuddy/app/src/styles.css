@@ -143,7 +143,16 @@ input[type=text], input[type=file] { font-family: inherit; }
 
 /* Summary */
 .summary { margin-top: 20px; }
-.summary-title { font-size: 0.88rem; font-weight: 700; color: #8a94b0; margin-bottom: 10px; }
+.summary-title-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.summary-title { font-size: 0.88rem; font-weight: 700; color: #8a94b0; }
+.btn-zip-download {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 16px; border-radius: 8px; text-decoration: none;
+  background: linear-gradient(125deg, #7f6df2, #3c8cff);
+  color: #fff; font-size: 0.8rem; font-weight: 700;
+  transition: opacity 0.15s;
+}
+.btn-zip-download:hover { opacity: 0.88; }
 .summary-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
 .summary-table th {
   text-align: left; padding: 8px 12px;
@@ -179,7 +188,29 @@ input[type=text], input[type=file] { font-family: inherit; }
 .dec-ml.legend-decision  { color: #818cf8; }
 .dec-nlr.legend-decision { color: #4ade80; }
 
-/* ── Tabs ── */
+.dot-pink { background: #f0abfc; }
+.section-note { font-size: 0.62rem; color: #3a4460; font-weight: 400; letter-spacing: 0; text-transform: none; margin-left: 4px; }
+.field-input--secret { letter-spacing: 0.08em; }
+
+/* ── AI flow diagram ── */
+.ai-flow { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
+.ai-step {
+  padding: 6px 12px; border-radius: 7px;
+  background: #161d30; border: 1px solid #2e3c5e;
+  font-size: 0.74rem; font-weight: 600; color: #8a94b0;
+}
+.ai-arrow { color: #3a4460; font-size: 0.9rem; }
+
+/* ── Re-download button ── */
+.btn-redownload {
+  margin-left: auto; padding: 6px 14px; border-radius: 7px;
+  background: #1a2035; border: 1px solid #2e3c5e; color: #8a94b0;
+  font-size: 0.76rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+  transition: background 0.15s;
+}
+.btn-redownload:hover { background: #222c45; color: #dce3f5; }
+
+.log-spin { color: #f59e0b; }
 .tabs { display: flex; gap: 10px; margin-bottom: 14px; }
 .tab {
   flex: 1; padding: 11px 16px; border-radius: 10px; text-align: left; cursor: pointer;
